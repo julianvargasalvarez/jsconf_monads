@@ -2,6 +2,11 @@
 
 var sine = function(x){ return Math.sin(x); };
 var cube = function(x){ return x*x*x; };
-var sineCubed = function(x) { return sine(cube(x)); };
 
-console.log(sineCubed(3));
+var compose = function(f, g){
+  return function(x){
+    return f(g(x));
+  }
+}
+var sineCubed = compose(sine, cube);
+console.log(sineCubed(30));
