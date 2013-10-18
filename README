@@ -3,3 +3,12 @@ Monads as a Design Pattern
 Julian David Vargas Alvarez
 j@codetag.me
 @app_config
+
+There is only one file, monads.js
+To see the slides just:
+git checkout slide1 -f
+git checkout slide2 -f
+git checkout slide3 -f
+git checkout slide4 -f
+git checkout slide5 -f
+git checkout slide6 -f
