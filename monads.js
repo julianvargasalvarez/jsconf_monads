@@ -40,4 +40,36 @@ var lift = function(f) {
 var roundDebug = lift(round);
 var roundedSine = compose(bind(roundDebug), bind(sine));
 
-console.log(roundedSine(unit(30)));
+//************************************************
+
+var children = function(parentElement) {
+  var theChildren = [];
+  var nodes = parentElement.childNodes;
+  for(var i=0; i<nodes.length; i++){
+    theChildren[i] = nodes[i];
+  }
+  return theChildren;
+}
+var grandChildren = function(granPha) {
+  var result = [];
+  var child = children(granPha);
+  for(var i=0; i<child.length; i++){
+    result = result.concat(children(child[i]));
+  }
+  return result;
+}
+
+var unit = function(htmlElement) { return [htmlElement]; };
+var bind = function(f) {
+  return function(list) {
+    var result = [];
+    for(var i=0; i<list.length; i++){
+      result = result.concat(f(list[i]));
+    }
+    return result;
+  }
+}
+
+var grandChildren = compose(bind(children), bind(children));
+grandChildren(unit(head));
+$("head").child().child() // jQuery
