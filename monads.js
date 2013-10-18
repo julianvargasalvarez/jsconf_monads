@@ -7,6 +7,8 @@ var cube = function(x){
   return [x*x*x, 'cube was called'];
 };
 
+var round = function(x) { return Math.round(x); };
+
 var compose = function(f, g){
   return function(x){
     return f(g(x));
@@ -25,18 +27,17 @@ var bind = function(f) {
   }
 }
 
-var sineCubed = compose(bind(sine), bind(cube));
-console.log(sineCubed([3, '']));
+var unit = function(x) {
+  return [x, ''];
+}
 
+var lift = function(f) {
+  return function(x) {
+    return unit(f(x));
+  }
+}
 
+var roundDebug = lift(round);
+var roundedSine = compose(bind(roundDebug), bind(sine));
 
-
-
-
-
-
-
-
-
-
-
+console.log(roundedSine(unit(30)));
