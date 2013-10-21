@@ -14,6 +14,6 @@ git checkout slide5 -f
 git checkout slide6 -f
 
 
-To compare the content of two slides:
+To compare two slides:
 git diff slide1..slide2
 git diff slide2..slide3
